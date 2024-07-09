@@ -8,7 +8,8 @@
 // Get the watch
 let watch = document.querySelector(".watch .container .arrow")
 
-setInterval(() => {
+// Time set function
+function watchFunc() {
     // Get current local date
     let time = new Date()
     // Get current local hour
@@ -18,5 +19,11 @@ setInterval(() => {
         hour -= 12
     }
     // Rotate degree = ((current hour * 30deg) + 180deg(set start point on 12)) + (current minutes * 0.5deg)
-    watch.style.transform = `rotate(${((hour * 30) + 180) + (time.getMinutes() * 0.5)}deg)` // Set start point
+    watch.style.transform = `rotate(${((hour * 30) + 180) + (time.getMinutes() * 0.5)}deg)` // Set time every second
+}
+
+watchFunc()
+
+setInterval(() => {
+    watchFunc()
 }, 1000)
